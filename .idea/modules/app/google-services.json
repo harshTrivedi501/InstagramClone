@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "375039230324",
+    "firebase_url": "https://instagram-9ff45.firebaseio.com",
+    "project_id": "instagram-9ff45",
+    "storage_bucket": "instagram-9ff45.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:375039230324:android:ab7fd5125496de0fefac21",
+        "android_client_info": {
+          "package_name": "learncodeonline.in.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "375039230324-7r5shffp4h0tb76mq1c1p6khaoovlhui.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "learncodeonline.in.myapplication",
+            "certificate_hash": "886423dba0842b9587377fbcb41a43c6c9b03463"
+          }
+        },
+        {
+          "client_id": "375039230324-n0hfd7v3ktqm07dk82t8tjkqeiogndtl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyC5Rz_WeNOPSqjdQL5GQTY-W4NInyNN0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "375039230324-n0hfd7v3ktqm07dk82t8tjkqeiogndtl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
