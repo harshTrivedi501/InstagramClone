@@ -51,6 +51,8 @@ public class HomeActivity extends AppCompatActivity {
                         break;
 
                     case R.id.nav_profile:
+                        //TODO: Add this line so that when user taps on profile tab then his/her profile details will appear.
+                        //getSharedPreferences("PROFILE", MODE_PRIVATE).edit().putString("profileId", "none").apply();
                         selectorFragment = new ProfileFragment();
                         break;
                 }
@@ -62,6 +64,16 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+        Bundle intent = getIntent().getExtras();
+        if (intent != null) {
+            String profileId = intent.getString("publisherId");
+
+            getSharedPreferences("PROFILE", MODE_PRIVATE).edit().putString("profileId", profileId).apply();
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
+            bottomNavigationView.setSelectedItemId(R.id.nav_profile);
+        } else {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+        }
     }
 }

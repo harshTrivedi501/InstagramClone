@@ -37,6 +37,8 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
 
+    implementation 'com.rengwuxian.materialedittext:library:2.1.4'
+
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

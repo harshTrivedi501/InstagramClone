@@ -1,14 +1,23 @@
 package learncodeonline.in.myapplication.Model;
 
 public class Comment {
-    private String comment,publisher;
+    private String comment,publisher,id;
 
     public Comment() {
     }
 
-    public Comment(String comment, String publisher) {
+    public Comment(String comment, String publisher, String id) {
         this.comment = comment;
         this.publisher = publisher;
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getComment() {
