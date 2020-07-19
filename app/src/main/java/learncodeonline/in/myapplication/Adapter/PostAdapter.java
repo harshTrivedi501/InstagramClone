@@ -21,9 +21,11 @@ import com.google.firebase.database.ValueEventListener;
 import com.hendraanggrian.appcompat.widget.SocialTextView;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
 import java.util.List;
 
 import learncodeonline.in.myapplication.CommentActivity;
+import learncodeonline.in.myapplication.FollowersActivity;
 import learncodeonline.in.myapplication.Fragments.PostDetailFragment;
 import learncodeonline.in.myapplication.Fragments.ProfileFragment;
 import learncodeonline.in.myapplication.Model.Post;
@@ -88,6 +90,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 if (holder.like.getTag().equals("like")) {
                     FirebaseDatabase.getInstance().getReference().child("Likes").child(post.getPostid())
                             .child(firebaseUser.getUid()).setValue(true);
+
+                    addNotification(post.getPostid(), post.getPublisher());
                 } else {
                     FirebaseDatabase.getInstance().getReference().child("Likes").child(post.getPostid())
                             .child(firebaseUser.getUid()).removeValue();
@@ -168,6 +172,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
                 ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, new PostDetailFragment()).commit();
+            }
+        });
+
+        holder.noOfLikes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, FollowersActivity.class);
+                intent.putExtra("id", post.getPublisher());
+                intent.putExtra("title", "likes");
+                mContext.startActivity(intent);
             }
         });
 
@@ -269,5 +283,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
             }
         });
+    }
+
+    private void addNotification(String postId, String publisherId) {
+        HashMap<String, Object> map = new HashMap<>();
+
+        map.put("userid", publisherId);
+        map.put("text", "liked your post.");
+        map.put("postid", postId);
+        map.put("isPost", true);
+
+        FirebaseDatabase.getInstance().getReference().child("Notifications").child(firebaseUser.getUid()).push().setValue(map);
     }
 }

@@ -34,8 +34,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import learncodeonline.in.myapplication.Adapter.PhotoAdapter;
 import learncodeonline.in.myapplication.Adapter.PostAdapter;
 import learncodeonline.in.myapplication.EditProfileActivity;
+import learncodeonline.in.myapplication.FollowersActivity;
 import learncodeonline.in.myapplication.Model.Post;
 import learncodeonline.in.myapplication.Model.User;
+import learncodeonline.in.myapplication.OptionsActivity;
 import learncodeonline.in.myapplication.R;
 
 
@@ -58,7 +60,7 @@ public class ProfileFragment extends Fragment {
 
     private FirebaseUser fUser;
 
-    String profileId;
+    String profileId; //userId
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -154,6 +156,33 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
                 recyclerView.setVisibility(View.GONE);
                 recyclerViewSaves.setVisibility(View.VISIBLE);
+            }
+        });
+
+        followers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), FollowersActivity.class);
+                intent.putExtra("id", profileId);
+                intent.putExtra("title", "followers");
+                startActivity(intent);
+            }
+        });
+
+        following.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), FollowersActivity.class);
+                intent.putExtra("id", profileId);
+                intent.putExtra("title", "followings");
+                startActivity(intent);
+            }
+        });
+
+        options.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), OptionsActivity.class));
             }
         });
 
